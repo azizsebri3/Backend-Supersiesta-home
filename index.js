@@ -1,0 +1,40 @@
+import express from "express";
+import cors from "cors";
+import * as dotenv from "dotenv";
+import connectDB from "./config/connection.js";
+import registerRoute from "./routes/register.js";
+import loginRoute from "./routes/login.js";
+import usersRoute from "./routes/users.js";
+import productsRoute from "./routes/products.js";
+import clientsRoute from "./routes/clients.js";
+import ordersRoute from "./routes/orders.js";
+
+dotenv.config();
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+app.use("/api/register", registerRoute);
+app.use("/api/login", loginRoute);
+app.use("/api/users", usersRoute);
+app.use("/api/products", productsRoute);
+app.use("/api/clients", clientsRoute);
+app.use("/api/orders", ordersRoute);
+
+const PORT = 5000 ; 
+const startServer = async () => {
+  try {
+    connectDB("mongodb://localhost:27017/comforama");
+
+    app.listen(PORT, () => {
+      console.log(`Server is listening on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+startServer();
+
+export default app;
