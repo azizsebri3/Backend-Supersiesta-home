@@ -1,7 +1,7 @@
 // controllers/clientController.js
 
 import Client from "../models/Client.js";
-
+import {ObjectId} from "mongodb"
 // Get all clients
 async function getAllClients(req, res) {
   try {
@@ -24,10 +24,18 @@ async function getClientById(req, res) {
 // Delete client by ID
 async function deleteClientById(req, res) {
   try {
-    await req.client.remove();
-    res.status(200).json({ success: true, message: "Client deleted successfully" });
+    const deleted = await Client.findByIdAndRemove(req.params.id);
+    if (!deleted) {
+      res
+        .status(400)
+        .json({ success: false, message: " no Client deleted " });
+    } else {
+      res
+      .status(200)
+      .json({ success: true, message: "Client deleted successfully" });
+    }
   } catch (error) {
-    res.status(500).json({ success: false, message: "Internal server error" });
+    res.status(400).json({ success: false, message: error.message });
   }
 }
 
@@ -42,10 +50,17 @@ async function updateClientById(req, res) {
       address: req.body.address,
     };
     await Client.findByIdAndUpdate(req.params.id, updateClient);
-    res.status(200).json({ success: true, message: "Client updated successfully" });
+    res
+      .status(200)
+      .json({ success: true, message: "Client updated successfully" });
   } catch (error) {
     res.status(500).json({ success: false, message: "Internal server error" });
   }
 }
 
-export default { getAllClients, getClientById, deleteClientById, updateClientById };
+export default {
+  getAllClients,
+  getClientById,
+  deleteClientById,
+  updateClientById,
+};

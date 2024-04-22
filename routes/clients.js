@@ -16,3 +16,5 @@ router.delete("/:id", checkClientExists, clientController.deleteClientById);
 router.patch("/:id", checkClientExists, clientController.updateClientById);
 
 export default router;
+
+

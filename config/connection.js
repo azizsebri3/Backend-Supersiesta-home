@@ -11,4 +11,4 @@ const connectDB = (url) => {
     .catch((err) => console.log(err));
 };
 
-export default connectDB;
+export default connectDB; 

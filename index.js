@@ -25,7 +25,7 @@ app.use("/api/orders", ordersRoute);
 const PORT = 5000 ; 
 const startServer = async () => {
   try {
-    connectDB("mongodb://localhost:27017/comforama");
+    connectDB("mongodb+srv://azizsbr:aziz93621982sebri@supersiesta.bjpqmt7.mongodb.net/Supersietsa");
 
     app.listen(PORT, () => {
       console.log(`Server is listening on port ${PORT}`);
