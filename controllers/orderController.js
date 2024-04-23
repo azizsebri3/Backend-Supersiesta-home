@@ -106,7 +106,7 @@ async function addOrder(req, res) {
     const mailOptions = {
       from: "sebriaziz2016@gmail.com",
       to: clientData.email,
-      subject: "Facture d'achat Comforama",
+      subject: "[SuperSiesta-Home] Facture d'achat",
       html: invoiceHTML, // Use the provided invoice HTML directly
     };
 
@@ -217,11 +217,11 @@ async function updateOrderConfirmation(req, res) {
     const mailOptions = {
       from: "sebriaziz2016@gmail.com",
       to: email,
-      subject: "Confirmation de commande",
+      subject: "[Supersiesta-home] Confirmation de commande",
       html: `
         <p>Votre commande a été confirmée avec succès. Nous vous remercions pour votre achat chez nous.</p>
         <p>Merci beaucoup et à bientôt  !</p>
-        <p>Comforama</p>
+        <p>SuperSiesta</p>
       `,
     };
 
