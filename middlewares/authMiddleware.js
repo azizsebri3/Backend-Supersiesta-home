@@ -8,7 +8,8 @@ async function authenticateUser(req, res, next) {
     if (!user) {
       return res.status(401).send("Invalid email or password");
     }
-    const passwordMatch = await argon2.verify(user.password, password);
+    const hachedPassword = await argon2.hash(password);
+    const passwordMatch = await argon2.verify(user.password, hachedPassword);
     if (!passwordMatch) {
       return res.status(401).send("Invalid email or password");
     }
