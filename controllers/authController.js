@@ -1,6 +1,4 @@
-// controllers/authController.js
-
-import bcrypt from "bcrypt";
+import argon2 from "argon2";
 import User from "../models/register.js";
 
 async function loginUser(req, res) {
@@ -10,7 +8,7 @@ async function loginUser(req, res) {
     if (!user) {
       return res.status(401).send("Invalid email or password");
     }
-    const passwordMatch = await bcrypt.compare(password, user.password);
+    const passwordMatch = await argon2.verify(user.password, password);
     if (!passwordMatch) {
       return res.status(401).send("Invalid email or password");
     }
