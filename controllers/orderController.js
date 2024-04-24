@@ -95,7 +95,7 @@ async function addOrder(req, res) {
     const mailOptions = {
       from: "sebriaziz2016@gmail.com",
       to: clientData.email,
-      subject: "[SuperSiesta-Home] Facture d'achat",
+      subject: "[supersiesta-home] Facture d'achat",
       html: invoiceHTML, // Use the provided invoice HTML directly
     };
 
