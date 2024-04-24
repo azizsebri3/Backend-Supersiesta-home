@@ -44,24 +44,13 @@ async function addOrder(req, res) {
     // Check if clientData is provided and contains required fields
     if (
       !clientData ||
-      !clientData.email ||
+      !clientData.name ||
       !clientData.phone ||
       !clientData.address
     ) {
       return res.status(400).json({ message: "Client information incomplete" });
     }
-    if (
-      !clientData ||
-      !clientData.email ||
-      !isValidEmail(clientData.email) ||
-      !clientData.phone ||
-      !clientData.address
-    ) {
-      return res
-        .status(400)
-        .json({ field: "email", message: "Invalid email format" });
-    }
-
+  
     if (
       !clientData.phone ||
       clientData.phone.length !== 8 ||

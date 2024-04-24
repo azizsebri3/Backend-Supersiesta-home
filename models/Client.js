@@ -4,11 +4,11 @@ import mongoose from "mongoose" ;
 const clientSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: false,
+    required: true,
   },
   prenom:{
     type: String,
-    required: true,
+    required: false,
   },
   email: {
     type: String,
@@ -25,7 +25,7 @@ const clientSchema = new mongoose.Schema({
   orders: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Order", // Assuming you have an Order schema defined
+      ref: "Order",
     },
   ],
 });
