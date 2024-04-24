@@ -25,11 +25,11 @@ async function deleteOrder(req, res) {
 }
 
 async function addOrder(req, res) {
-  const isValidEmail = (email) => {
-    // Regular expression for email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
+  // const isValidEmail = (email) => {
+  //   // Regular expression for email validation
+  //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  //   return emailRegex.test(email);
+  // };
 
   try {
     const {
@@ -43,7 +43,6 @@ async function addOrder(req, res) {
     console.log(invoiceHTML);
     // Check if clientData is provided and contains required fields
     if (
-      !clientData ||
       !clientData.name ||
       !clientData.phone ||
       !clientData.address
