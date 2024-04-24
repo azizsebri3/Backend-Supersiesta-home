@@ -44,8 +44,7 @@ async function addOrder(req, res) {
     // Check if clientData is provided and contains required fields
     if (
       !clientData.name ||
-      !clientData.phone ||
-      !clientData.address
+      !clientData.phone 
     ) {
       return res.status(400).json({ message: "Client information incomplete" });
     }
