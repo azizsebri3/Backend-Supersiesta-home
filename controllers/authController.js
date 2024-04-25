@@ -6,18 +6,18 @@ async function loginUser(req, res) {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(401).send("Invalid email");
+      return res.status(401).send({ error: "Invalid email or password" });
     }
-    const hashedPassword = await argon2.hash(password);
 
-    const passwordMatch = await argon2.verify(user.password, hashedPassword);
+    const passwordMatch = await argon2.verify(user.password, password);
     if (!passwordMatch) {
-      return res.status(401).send("Invalid email or password");
+      return res.status(401).send({ error: "Invalid email or password" });
     }
-    res.status(200).send("Login successful");
+
+    res.status(200).send({ message: "Login successful" });
   } catch (error) {
     console.error(error);
-    res.status(500).send("Error logging in");
+    res.status(500).send({ error: "Error logging in" });
   }
 }
 
