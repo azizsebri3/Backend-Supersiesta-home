@@ -13,5 +13,15 @@ async function registerUser(req, res) {
     res.status(500).send("Error registering user");
   }
 }
+// Controller function to fetch all clients
+async function getAllUsers(req, res) {
+  try {
+    const users = await User.find();
+    res.status(200).json(users);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+}
 
-export default { registerUser };
+export default { getAllUsers, registerUser };
