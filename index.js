@@ -9,6 +9,7 @@ import productsRoute from "./routes/products.js";
 import clientsRoute from "./routes/clients.js";
 import ordersRoute from "./routes/orders.js";
 
+
 dotenv.config();
 
 const app = express();
@@ -21,6 +22,7 @@ app.use("/api/users", usersRoute);
 app.use("/api/products", productsRoute);
 app.use("/api/clients", clientsRoute);
 app.use("/api/orders", ordersRoute);
+
 
 const PORT = 4000 ; 
 const startServer = async () => {
