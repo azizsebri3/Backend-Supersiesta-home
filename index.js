@@ -9,7 +9,6 @@ import productsRoute from "./routes/products.js";
 import clientsRoute from "./routes/clients.js";
 import ordersRoute from "./routes/orders.js";
 
-
 dotenv.config();
 
 const app = express();
@@ -23,11 +22,11 @@ app.use("/api/products", productsRoute);
 app.use("/api/clients", clientsRoute);
 app.use("/api/orders", ordersRoute);
 
+const PORT = process.env.PORT || 4000;
 
-const PORT = 4000 ; 
 const startServer = async () => {
   try {
-    connectDB("mongodb+srv://azizsbr:aziz93621982sebri@supersiesta.bjpqmt7.mongodb.net/Supersietsa");
+    connectDB(process.env.MONGODB_URI);
 
     app.listen(PORT, () => {
       console.log(`Server is listening on port ${PORT}`);
