@@ -12,7 +12,11 @@ import ordersRoute from "./routes/orders.js";
 dotenv.config();
 
 const app = express();
-app.use(cors());
+let corsOptions = { 
+  origin : ['https://www.supersiesta-home.tn'], 
+} 
+ 
+app.use(cors(corsOptions))
 app.use(express.json());
 
 app.use("/api/register", registerRoute);
